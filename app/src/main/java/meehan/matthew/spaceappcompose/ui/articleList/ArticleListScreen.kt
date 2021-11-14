@@ -1,5 +1,6 @@
 package meehan.matthew.spaceappcompose.ui.articleList
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,16 +9,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import meehan.matthew.spaceappcompose.R
+import meehan.matthew.spaceappcompose.theme.SpaceAppTheme
 
 @Composable
 fun ArticleListScreen(viewModel: ArticleListViewModel) {
@@ -90,7 +92,7 @@ fun ArticleListRecyclerView(
                     }
             )
             Divider(
-                color = MaterialTheme.colorScheme.outline,
+                color = Color.Gray,
                 thickness = dimensionResource(
                     id = R.dimen.divider_size
                 ),
@@ -105,43 +107,61 @@ fun ArticleListRecyclerView(
     }
 }
 
-@Preview
+@Preview(
+    group = "Loading"
+)
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES,
+    showBackground = true,
+    group = "Loading"
+)
 @Composable
 fun ArticleListViewLoadingPreview() {
-    ArticleListView(
-        state = ArticleListViewState.Loading,
-        modifier = Modifier
-            .fillMaxSize()
-    )
+    SpaceAppTheme {
+        ArticleListView(
+            state = ArticleListViewState.Loading,
+            modifier = Modifier
+                .fillMaxSize()
+        )
+    }
 }
 
-@Preview
+@Preview(
+    group = "Loaded"
+)
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES,
+    showBackground = true,
+    group = "Loaded"
+)
 @Composable
 fun ArticleListViewPreview() {
-    ArticleListView(
-        state = ArticleListViewState.Loaded(
-            data = listOf(
-                ArticleViewHolderState(
-                    title = "Test Title 1",
-                    subtitle = "Test Subtitle 1",
-                    photoUrl = "",
-                    onClick = {}
-                ),
-                ArticleViewHolderState(
-                    title = "Test Title 2",
-                    subtitle = "Test Subtitle 2",
-                    photoUrl = "",
-                    onClick = {}
-                ),
-                ArticleViewHolderState(
-                    title = "Test Title 3",
-                    subtitle = "Test Subtitle 3",
-                    photoUrl = "",
-                    onClick = {}
+    SpaceAppTheme {
+        ArticleListView(
+            state = ArticleListViewState.Loaded(
+                data = listOf(
+                    ArticleViewHolderState(
+                        title = "Test Title 1",
+                        subtitle = "Test Subtitle 1",
+                        photoUrl = "",
+                        onClick = {}
+                    ),
+                    ArticleViewHolderState(
+                        title = "Test Title 2",
+                        subtitle = "Test Subtitle 2",
+                        photoUrl = "",
+                        onClick = {}
+                    ),
+                    ArticleViewHolderState(
+                        title = "Test Title 3",
+                        subtitle = "Test Subtitle 3",
+                        photoUrl = "",
+                        onClick = {}
+                    )
                 )
-            )
-        ),
-        modifier = Modifier
-            .fillMaxSize()
-    )
+            ),
+            modifier = Modifier
+                .fillMaxSize()
+        )
+    }
 }

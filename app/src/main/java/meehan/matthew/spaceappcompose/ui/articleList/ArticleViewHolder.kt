@@ -1,15 +1,17 @@
 package meehan.matthew.spaceappcompose.ui.articleList
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.graphics.drawable.ColorDrawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
@@ -18,6 +20,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import coil.compose.rememberImagePainter
 import meehan.matthew.spaceappcompose.R
+import meehan.matthew.spaceappcompose.theme.SpaceAppTheme
 
 @Composable
 fun ArticleViewHolder(
@@ -90,7 +93,7 @@ fun ArticleViewHolderTitleView(
 ) {
     Text(
         text = title,
-        color = MaterialTheme.colorScheme.onBackground,
+        color = MaterialTheme.colors.onBackground,
         modifier = modifier
     )
 }
@@ -102,7 +105,7 @@ fun ArticleViewHolderSubtitleView(
 ) {
     Text(
         text = subtitle,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        color = Color.Gray,
         modifier = modifier
     )
 }
@@ -118,7 +121,7 @@ fun ArticleViewHolderImageView(
             builder = {
                 placeholder(
                     drawable = ColorDrawable(
-                        MaterialTheme.colorScheme.primary.toArgb()
+                        MaterialTheme.colors.primary.toArgb()
                     )
                 )
             }
@@ -130,22 +133,28 @@ fun ArticleViewHolderImageView(
 }
 
 @Preview
+@Preview(
+    uiMode = UI_MODE_NIGHT_YES,
+    showBackground = true
+)
 @Composable
 fun ArticleViewHolderPreview() {
-    ArticleViewHolder(
-        state = ArticleViewHolderState(
-            title = "Test Title",
-            subtitle = "Test Subtitle",
-            photoUrl = "",
-            onClick = {}
-        ),
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(
-                all = dimensionResource(
-                    id = R.dimen.padding_standard
+    SpaceAppTheme {
+        ArticleViewHolder(
+            state = ArticleViewHolderState(
+                title = "Test Title",
+                subtitle = "Test Subtitle",
+                photoUrl = "",
+                onClick = {}
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(
+                    all = dimensionResource(
+                        id = R.dimen.padding_standard
+                    )
                 )
-            )
-    )
+        )
+    }
 }
