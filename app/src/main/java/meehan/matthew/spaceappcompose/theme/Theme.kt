@@ -44,7 +44,6 @@ fun SpaceAppTheme(
 
     MaterialTheme(
         colors = colors,
-        typography = MaterialTheme.typography,
         content = content
     )
 }
