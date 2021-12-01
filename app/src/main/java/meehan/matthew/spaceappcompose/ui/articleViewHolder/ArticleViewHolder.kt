@@ -21,6 +21,7 @@ import androidx.constraintlayout.compose.Dimension
 import coil.compose.rememberImagePainter
 import meehan.matthew.spaceappcompose.R
 import meehan.matthew.spaceappcompose.theme.SpaceAppTheme
+import meehan.matthew.spaceappcompose.ui.articleViewHolder.ArticleViewHolderState
 
 @Composable
 fun ArticleViewHolder(

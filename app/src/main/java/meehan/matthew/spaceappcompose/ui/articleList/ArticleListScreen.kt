@@ -20,6 +20,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import meehan.matthew.spaceappcompose.R
 import meehan.matthew.spaceappcompose.theme.SpaceAppTheme
+import meehan.matthew.spaceappcompose.ui.articleViewHolder.ArticleViewHolderState
 
 @Composable
 fun ArticleListScreen(viewModel: ArticleListViewModel) {
